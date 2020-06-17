@@ -1,35 +1,34 @@
 `
 import React, { Component } from 'react'
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom'
-
-import logo from './logo.svg'
+import CSVReader from 'react-csv-reader'
 import './App.css'
 
-import Home from './Home'
-import About from './About'
+import Schedule from './Schedule';
 `
 
 class App extends Component
+  constructor: (props) ->
+    super props
+    @state =
+      users: null
+
+  handleFileLoaded: (data, fileInfo) =>
+    @setState users: data
+
+  papaparseOptions =
+    header: true,
+    skipEmptyLines: true,
+    dynamicTyping: true
+
   render: ->
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React (CS)</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Switch>
-          <Route exact path="/" component={ Home } />
-          <Route path="/about" component={ About } />
-        </Switch>
-      </div>
-    </Router>
+    <div className='App'>
+      <h1>
+        File Upload using React!
+      </h1>
+      <CSVReader onFileLoaded={@handleFileLoaded} parserOptions={papaparseOptions} />
+      { if @state.users
+        <Schedule users={@state.users} />
+      }
+    </div>
 
 export default App
