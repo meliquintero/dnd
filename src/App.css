@@ -1,11 +1,6 @@
 .App {
   text-align: center;
-}
-
-.preferred-times-list {
-  display: flex;
-}
-
-.droppable {
-  min-width: 30%;
+  padding: 20px;
+  margin: auto;
+  width: 80%;
 }

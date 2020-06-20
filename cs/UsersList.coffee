@@ -10,23 +10,22 @@ class UserList extends Component
 
   UsersData: ({time, usersId, users}) ->
     map(usersId, (userId, index) =>
-      console.log "INEES", index
       <Draggable
         key={users[userId].id}
         draggableId={users[userId].id}
         index={index}
         isDragDisabled={users[userId].fixed}>
         {(provided, snapshot) =>
-          userType = if users[userId].fixed then 'gray' else 'none'
+          userType = if users[userId].fixed then '#D3D3D3' else 'none'
           <div
             key={users[userId].id}
             {...provided.draggableProps }
             {...provided.dragHandleProps }
             ref={provided.innerRef}
-            className='card user'>
+            className='ui card fluid'>
             <div
               className='content'
-              style={{background: (if snapshot.isDragging then 'blue' else userType)}}>
+              style={{background: (if snapshot.isDragging then '#FFF0F5' else userType)}}>
               <div>{users[userId].id}</div>
               <div className='header'> {users[userId].firstName} {users[userId].lastName} </div>
               <div className='description'>{users[userId].email} </div>
@@ -37,7 +36,7 @@ class UserList extends Component
     )
 
   render: ->
-    <div className='ui cards users-list'>
+    <div className='ui cards'>
       { @UsersData(@props) }
     </div>
 

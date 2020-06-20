@@ -15,19 +15,19 @@ class PreferredTime extends Component
     else
       true
 
-  droppableStyle = {border: "solid 3px green", transition: 'background-color 0.3s ease'}
+  droppableStyle = { transition: 'background-color 0.3s ease'}
 
   getPrefferedTimes: ({preferredTimes, usersGroupedByTime, users}) ->
     map(preferredTimes, (time, index) =>
       <Droppable
         key={time}
-        type="TIMES"
+        type='TIMES'
         index={index}
         droppableId={time}>
         {(provided, snapshot) =>
           <div
-            className="droppable"
-            style={{background: (if snapshot.isDraggingOver then 'red'), ...droppableStyle}}
+            className='column'
+            style={{background: (if snapshot.isDraggingOver then '#F08080'), ...droppableStyle}}
             ref={provided.innerRef}
             {...provided.droppabeProps }>
             <UsersList
@@ -40,7 +40,7 @@ class PreferredTime extends Component
     )
 
   render: ->
-    <div className='preferred-times-list'>
+    <div className='ui three column grid'>
       { @getPrefferedTimes(@props) }
     </div>
 
