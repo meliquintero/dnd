@@ -2,10 +2,10 @@
 import React, { Component } from 'react'
 import CSVReader from 'react-csv-reader'
 import './App.css'
-import {clone} from 'lodash'
-import {DragDropContext} from 'react-beautiful-dnd';
+import { clone } from 'lodash'
+import { DragDropContext } from 'react-beautiful-dnd';
 import PreferredTime from './PreferredTime';
-import {decorateData, papaparseOptions} from './utils';
+import { decorateData, papaparseOptions } from './utils';
 `
 
 class App extends Component
@@ -19,19 +19,13 @@ class App extends Component
   handleFileLoaded: (data, fileInfo) =>
     @setState decorateData(data)
 
-  componentDidUpdate: (prevProps, prevState) =>
-    console.log "prevProps", prevProps
-    console.log "prevState", prevState
-    console.log "STATE", @state
-
-
   onDragEnd: (result) =>
     {source, destination, draggableId} = result
     if not destination?
       return
     if destination.droppableId is source.droppableId and destination.index is source.index
       return
-    console.log "REST", result
+
     start = @state.usersGroupedByTime[source.droppableId]
     sourceUserIds = clone(start.usersId)
     sourceUserIds.splice(source.index, 1)
@@ -48,7 +42,6 @@ class App extends Component
         }
       }
       @setState newState
-      return
     else
       newStartTime = {...start, usersId: sourceUserIds}
 
@@ -71,7 +64,6 @@ class App extends Component
           [newEndTime.id]: newEndTime
         }
       }
-      console.log "NEWSATE", newState
       @setState newState
 
   render: ->

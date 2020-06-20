@@ -1,39 +1,44 @@
 `
-import React from 'react'
-import {map} from 'lodash'
-import { Draggable} from 'react-beautiful-dnd';
+import React, { Component } from 'react'
+import { map } from 'lodash'
+import { Draggable } from 'react-beautiful-dnd';
 `
 
-UserList = ({users, time}) ->
-  UsersData = map(users, (user, index) ->
-    <Draggable
-      key={user.id}
-      draggableId={user.id}
-      index={index}
-      isDragDisabled={user.fixed}>
-      {(provided, snapshot) =>
-        style={background: if user.fixed then 'green'}
-        <div
-          key={user.id}
-          {...provided.draggableProps }
-          {...provided.dragHandleProps }
-          ref={provided.innerRef}
-          className='card user'>
+class UserList extends Component
+  constructor: (props) ->
+    super props
+
+  UsersData: ({time, usersId, users}) ->
+    map(usersId, (userId, index) =>
+      console.log "INEES", index
+      <Draggable
+        key={users[userId].id}
+        draggableId={users[userId].id}
+        index={index}
+        isDragDisabled={users[userId].fixed}>
+        {(provided, snapshot) =>
+          userType = if users[userId].fixed then 'gray' else 'none'
           <div
-            className='content'
-            style={{background: (if snapshot.isDragging then 'blue'), ...style}}>
-            <div>{user.id}</div>
-            <div className='header'> {user.firstName} {user.lastName} </div>
-            <div className='description'>{user.email} </div>
+            key={users[userId].id}
+            {...provided.draggableProps }
+            {...provided.dragHandleProps }
+            ref={provided.innerRef}
+            className='card user'>
+            <div
+              className='content'
+              style={{background: (if snapshot.isDragging then 'blue' else userType)}}>
+              <div>{users[userId].id}</div>
+              <div className='header'> {users[userId].firstName} {users[userId].lastName} </div>
+              <div className='description'>{users[userId].email} </div>
+            </div>
           </div>
-        </div>
-      }
-    </Draggable>
-  )
+        }
+      </Draggable>
+    )
 
   render: ->
     <div className='ui cards users-list'>
-      { UsersData }
+      { @UsersData(@props) }
     </div>
 
 export default UserList

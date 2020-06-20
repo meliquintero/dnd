@@ -1,35 +1,47 @@
 `
-import React from 'react'
-import {map} from 'lodash'
-import {Droppable} from 'react-beautiful-dnd';
+import React, { Component } from 'react'
+import { map, isEqual } from 'lodash'
+import { Droppable } from 'react-beautiful-dnd';
 import UsersList from './UsersList'
 `
 
-PreferredTime = ({usersGroupedByTime, users, preferredTimes}) ->
-  if preferredTimes.length <= 0
-    return
+class PreferredTime extends Component
+  constructor: (props) ->
+    super props
+
+  shouldComponentUpdate: (nextProps, prevProps) =>
+    if isEqual(nextProps.usersGroupedByTime, @props.usersGroupedByTime)
+      false
+    else
+      true
+
   droppableStyle = {border: "solid 3px green", transition: 'background-color 0.3s ease'}
-  ScheludeData = map(preferredTimes, (time, index) ->
-    <Droppable
-      key={time}
-      type="TIMES"
-      index={index}
-      droppableId={time}>
-      {(provided, snapshot) =>
-        <div
-          className="droppable"
-          style={{background: (if snapshot.isDraggingOver then 'red'), ...droppableStyle}}
-          ref={provided.innerRef}
-          {...provided.droppabeProps }>
-          <UsersList time={time} users={map(usersGroupedByTime[time].usersId, (userId) -> users[userId])}/>
-          {provided.placeholder}
-        </div>}
-    </Droppable>
-  )
+
+  getPrefferedTimes: ({preferredTimes, usersGroupedByTime, users}) ->
+    map(preferredTimes, (time, index) =>
+      <Droppable
+        key={time}
+        type="TIMES"
+        index={index}
+        droppableId={time}>
+        {(provided, snapshot) =>
+          <div
+            className="droppable"
+            style={{background: (if snapshot.isDraggingOver then 'red'), ...droppableStyle}}
+            ref={provided.innerRef}
+            {...provided.droppabeProps }>
+            <UsersList
+              time={time}
+              usersId={usersGroupedByTime[time].usersId}
+              users={users}/>
+            {provided.placeholder}
+          </div>}
+      </Droppable>
+    )
 
   render: ->
     <div className='preferred-times-list'>
-      { ScheludeData }
+      { @getPrefferedTimes(@props) }
     </div>
 
 export default PreferredTime
