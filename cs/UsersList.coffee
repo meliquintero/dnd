@@ -22,7 +22,12 @@ class UserList extends Component
             {...provided.draggableProps }
             {...provided.dragHandleProps }
             ref={provided.innerRef}
-            className='ui card fluid'>
+            className='ui card'>
+            {if users[userId].fixed
+              <a class='ui right corner label'>
+                <i class='lock icon'></i>
+              </a>
+            }
             <div
               className='content'
               style={{background: (if snapshot.isDragging then '#FFF0F5' else userType)}}>

@@ -29,7 +29,8 @@ class App extends Component
     <div className='App'>
       <Menu
         handleFileLoaded={@handleFileLoaded}
-        users={@state.users}/>
+        users={@state.users}
+        hasMovedUser={@state.hasMovedUser}/>
 
       { if @state.preferredTimes.length > 0
         <DragDropContext onDragEnd={@onDragEnd}>

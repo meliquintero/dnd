@@ -13,10 +13,9 @@ class DownloadCSV extends Component
       data={values(@props.users)}
       filename={'meeting-time.csv'}
       className='ui active button'
-      target='_blank'
-    >
+      target='_blank'>
       <i className='download icon'></i>
-      Download
+      Download updated CSV
     </CSVLink>
 
 export default DownloadCSV

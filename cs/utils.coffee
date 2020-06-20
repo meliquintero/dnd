@@ -8,59 +8,35 @@ updatedState = ({source, destination, draggableId}, state) ->
   if destination.droppableId is source.droppableId and destination.index is source.index
     return
 
-  newState = {}
-  start = state.usersGroupedByTime[source.droppableId]
-  sourceUserIds = clone(start.usersId)
-  sourceUserIds.splice(source.index, 1)
+  startUserIdsOrder = state.usersGroupedByTime[source.droppableId]
+  startUserIdsOrder.splice(source.index, 1)
 
   if destination.droppableId is source.droppableId
-    sourceUserIds.splice(destination.index, 0, draggableId)
-    newStartTime = {...start, usersId: sourceUserIds}
-
-    newState = {
-      ...state,
-      usersGroupedByTime: {
-        ...state.usersGroupedByTime,
-        [newStartTime.id]: newStartTime
-      }
-    }
+    startUserIdsOrder.splice(destination.index, 0, draggableId)
+    state.usersGroupedByTime[source.droppableId] = startUserIdsOrder
 
   else
-    newStartTime = {...start, usersId: sourceUserIds}
+    state.users[draggableId].preferredMeetingTime = destination.droppableId
+    state.hasMovedUser++
 
-    newUser = clone(state.users[draggableId])
-    newUser.preferredMeetingTime = destination.droppableId
+    destinationtUserIdsOrder = state.usersGroupedByTime[destination.droppableId]
+    destinationtUserIdsOrder.splice(destination.index, 0, draggableId)
 
-    end = state.usersGroupedByTime[destination.droppableId]
-    destinationUserIds = clone(end.usersId)
-    destinationUserIds.splice(destination.index, 0, draggableId)
-    newEndTime = {...end, usersId: destinationUserIds}
-    newState = {
-      ...state,
-      users: {
-        ...state.users,
-        [newUser.id]: newUser
-      }
-      usersGroupedByTime: {
-        ...state.usersGroupedByTime,
-        [newStartTime.id]: newStartTime
-        [newEndTime.id]: newEndTime
-      }
-    }
-    newState
+    state.usersGroupedByTime[source.droppableId] = startUserIdsOrder
+    state.usersGroupedByTime[destination.droppableId] = destinationtUserIdsOrder
+
+  state
 
 decorateInitialData = (data) ->
   usersGroupedByTime = {}
   users = {}
   for user in data
+    user.fixed ?= false
     users[user.id] = user
+
     if not usersGroupedByTime[user.preferredMeetingTime]?
-      usersGroupedByTime[user.preferredMeetingTime] = {
-        id: user.preferredMeetingTime
-        title: user.preferredMeetingTime,
-        usersId: []
-      }
-    usersGroupedByTime[user.preferredMeetingTime].usersId.push(user.id)
+      usersGroupedByTime[user.preferredMeetingTime] = []
+    usersGroupedByTime[user.preferredMeetingTime].push(user.id)
 
   preferredTimes = keys(usersGroupedByTime)
 

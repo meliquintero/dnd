@@ -1,16 +1,18 @@
 `
 import React, { Component } from 'react'
 import CSVReader from 'react-csv-reader'
-import {isEmpty} from 'lodash'
+import {isEqual} from 'lodash'
 
 import { papaparseOptions } from './utils';
 import DownloadCSV from './DownloadCSV';
-
 `
 
 class Menu extends Component
   constructor: (props) ->
     super props
+
+  shouldComponentUpdate: (nextProps, prevProps) =>
+    not isEqual(nextProps.users, @props.users)
 
   handleFileLoaded: (data) =>
     @props.handleFileLoaded(data)
@@ -23,7 +25,7 @@ class Menu extends Component
           parserOptions={papaparseOptions}/>
       </div>
       <div className='right item'>
-      { if not isEmpty(@props.users)
+      { if @props.hasMovedUser > 0
         <DownloadCSV users={@props.users}/>
       }
       </div>
