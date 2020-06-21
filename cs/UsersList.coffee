@@ -1,7 +1,8 @@
 `
 import React, { Component } from 'react'
 import { map } from 'lodash'
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd'
+import { fixedCard, dragging } from './styles';
 `
 
 class UserList extends Component
@@ -10,30 +11,31 @@ class UserList extends Component
 
   UsersData: ({time, usersId, users}) ->
     map(usersId, (userId, index) =>
+      user = users[userId]
       <Draggable
-        key={users[userId].id}
-        draggableId={users[userId].id}
+        key={user.id}
+        draggableId={user.id}
         index={index}
-        isDragDisabled={users[userId].fixed}>
+        isDragDisabled={user.fixed}>
         {(provided, snapshot) =>
-          userType = if users[userId].fixed then '#D3D3D3' else 'none'
+          cardStyle = if user.fixed then fixedCard else if snapshot.isDragging then dragging
           <div
-            key={users[userId].id}
+            key={user.id}
             {...provided.draggableProps }
             {...provided.dragHandleProps }
             ref={provided.innerRef}
             className='ui card'>
-            {if users[userId].fixed
-              <a class='ui right corner label'>
-                <i class='lock icon'></i>
+            {if user.fixed
+              <a className='ui right corner label'>
+                <i className='lock icon'></i>
               </a>
             }
             <div
               className='content'
-              style={{background: (if snapshot.isDragging then '#FFF0F5' else userType)}}>
-              <div>{users[userId].id}</div>
-              <div className='header'> {users[userId].firstName} {users[userId].lastName} </div>
-              <div className='description'>{users[userId].email} </div>
+              style={cardStyle}>
+              <div>{user.id}</div>
+              <div className='header'> {user.firstName} {user.lastName} </div>
+              <div className='description'>{user.email} </div>
             </div>
           </div>
         }

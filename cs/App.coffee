@@ -18,6 +18,7 @@ class App extends Component
       usersGroupedByTime: {}
       preferredTimes: []
       hasMovedUser: 0
+      newMeetingUserIds: []
 
   handleFileLoaded: (data) =>
     @setState decorateInitialData(data)
@@ -30,6 +31,7 @@ class App extends Component
       <Menu
         handleFileLoaded={@handleFileLoaded}
         users={@state.users}
+        newMeetingUserIds={@state.newMeetingUserIds}
         hasMovedUser={@state.hasMovedUser}/>
 
       { if @state.preferredTimes.length > 0
