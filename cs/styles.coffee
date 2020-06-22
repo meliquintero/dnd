@@ -2,16 +2,31 @@ button =
   backgroundColor: '#d6009d'
   color: 'white'
 
+column =
+  color: '#565bb0'
+
 fixedCard =
-  backgroundColor: '#00a145'
   color: 'white'
+  backgroundColor: '#00a145'
 
 dragging =
   backgroundColor: '#e3b3d6'
-  color: 'white'
 
 droppable =
-  backgroundColor: '#f08080'
+  backgroundColor: '#bec2d3'
   transition: 'background-color 0.3s ease'
 
-export { button, fixedCard, dragging, droppable }
+section =
+  margin: 'auto'
+  width: '90%'
+  backgroundColor: 'white'
+  marginTop: '2rem'
+
+export {
+  button,
+  column,
+  fixedCard,
+  dragging,
+  droppable,
+  section
+}

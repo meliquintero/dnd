@@ -2,7 +2,7 @@
 import {keys} from 'lodash'
 `
 
-updatedState = ({source, destination, draggableId}, state) ->
+updateState = ({source, destination, draggableId}, state) ->
   if not destination?
     return
   if destination.droppableId is source.droppableId and destination.index is source.index
@@ -22,8 +22,9 @@ updatedState = ({source, destination, draggableId}, state) ->
     destinationtUserIdsOrder.splice(destination.index, 0, draggableId)
 
   state.usersGroupedByTime[destination.droppableId].newMeetingUserIds.push(draggableId)
+
   if  state.usersGroupedByTime[destination.droppableId].newMeetingUserIds.length >= 2
-    state.newMeetingUserIds = state.usersGroupedByTime[destination.droppableId].newMeetingUserIds
+    state.newMeetingUserIds = state.usersGroupedByTime[destination.droppableId].newMeetingUserIds.slice(-2)
 
   state
 
@@ -51,8 +52,21 @@ papaparseOptions =
   skipEmptyLines: true
   dynamicTyping: true
 
+parseDate = (date) ->
+  [dayIndex, hourIndex, AmPmIndex] = [2, 4, 5]
+
+  data = date.split(/[ ,]+/)
+  data[dayIndex] = data[dayIndex].replace(/\D/g,'')
+  amPm = data.splice(AmPmIndex, 1)
+  if amPm[0].toUpperCase() is 'PM'
+    data[hourIndex] = parseInt(data[hourIndex], 10) + 12
+
+  data[hourIndex] += ':00'
+  data.join(' ')
+
 export {
   decorateInitialData,
   papaparseOptions,
-  updatedState
+  parseDate,
+  updateState
 }

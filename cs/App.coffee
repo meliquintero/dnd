@@ -1,11 +1,12 @@
 `
 import React, { Component } from 'react'
 import { cloneDeep } from 'lodash'
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd'
 
-import { decorateInitialData, updatedState } from './utils';
-import PreferredTime from './PreferredTime';
-import Menu from './Menu';
+import { decorateInitialData, updateState } from './utils'
+import Header from './Header'
+import Menu from './Menu'
+import PreferredTime from './PreferredTime'
 
 import './App.css'
 `
@@ -21,13 +22,14 @@ class App extends Component
       newMeetingUserIds: []
 
   handleFileLoaded: (data) =>
-    @setState decorateInitialData(data)
+    @setState decorateInitialData data
 
   onDragEnd: (result) =>
-    @setState updatedState(result, cloneDeep(@state))
+    @setState updateState result, cloneDeep @state
 
   render: ->
     <div className='App'>
+      <Header/>
       <Menu
         handleFileLoaded={@handleFileLoaded}
         users={@state.users}

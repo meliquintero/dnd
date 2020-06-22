@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { CSVLink } from 'react-csv'
 import { values } from 'lodash'
 
-import { button } from './styles';
+import { button } from './styles'
 `
 
 class DownloadCSV extends Component
@@ -12,7 +12,7 @@ class DownloadCSV extends Component
 
   render: ->
     <CSVLink
-      data={values(@props.users)}
+      data={values @props.users}
       filename={'meeting-time.csv'}
       className='ui active button'
       style={button}

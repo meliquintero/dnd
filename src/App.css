@@ -1,8 +1,11 @@
 .App {
+  font-family: Helvetica,Arial,sans-serif;
   text-align: center;
-  padding: 1rem;
-  margin: auto;
-  width: 90%;
+  background-color: #fbfbfb;
+}
+
+.logo {
+  height: 100px
 }
 
 .droppable{

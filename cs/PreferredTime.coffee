@@ -1,9 +1,10 @@
 `
 import React, { Component } from 'react'
 import { map, isEqual } from 'lodash'
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd'
+
 import UsersList from './UsersList'
-import { droppable } from './styles';
+import { column, droppable, section } from './styles'
 `
 
 class PreferredTime extends Component
@@ -13,13 +14,14 @@ class PreferredTime extends Component
   shouldComponentUpdate: (nextProps, prevProps) =>
     not isEqual(nextProps.usersGroupedByTime, @props.usersGroupedByTime)
 
-
   getPrefferedTimes: ({preferredTimes, usersGroupedByTime, users}) ->
     map(preferredTimes, (time, index) =>
-      <div key={time} className='column'>
-        <h2> {time} </h2>
+      <div
+        key={time}
+        className='column'
+        style={column}>
+        <h3> {time} </h3>
         <Droppable
-          type='TIMES'
           index={index}
           droppableId={time}>
           {(provided, snapshot) =>
@@ -39,7 +41,7 @@ class PreferredTime extends Component
     )
 
   render: ->
-    <div className='ui three column grid'>
+    <div className='ui three column grid' style={section}>
       { @getPrefferedTimes(@props) }
     </div>
 

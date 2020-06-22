@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { map } from 'lodash'
 import { Draggable } from 'react-beautiful-dnd'
-import { fixedCard, dragging } from './styles';
+import { fixedCard, dragging } from './styles'
 `
 
 class UserList extends Component
@@ -33,9 +33,12 @@ class UserList extends Component
             <div
               className='content'
               style={cardStyle}>
-              <div>{user.id}</div>
-              <div className='header'> {user.firstName} {user.lastName} </div>
-              <div className='description'>{user.email} </div>
+              <div className='header' style={cardStyle} >
+                {user.firstName} {user.lastName}
+              </div>
+              <div className='description' style={cardStyle}>
+                {user.email}
+              </div>
             </div>
           </div>
         }

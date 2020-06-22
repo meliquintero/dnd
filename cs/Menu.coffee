@@ -15,27 +15,30 @@ class Menu extends Component
   shouldComponentUpdate: (nextProps, prevProps) =>
     not isEqual(nextProps.users, @props.users) or not isEqual(nextProps.newMeetingUserIds, @props.newMeetingUserIds)
 
-  getUsers: (users, newUserIds) =>
-    map(newUserIds, (userId) -> users[userId])
+  getUsers: ({users, newMeetingUserIds}) =>
+    console.log "newMeetingUserIds", newMeetingUserIds
+    map(newMeetingUserIds, (userId) -> users[userId])
 
   handleFileLoaded: (data) =>
     @props.handleFileLoaded(data)
 
   render: ->
-    <div className='ui large menu'>
+    <div className='ui huge menu'>
       <div className='item'>
         <CSVReader
           onFileLoaded={@handleFileLoaded}
           parserOptions={papaparseOptions}/>
       </div>
+      <div className='right menu'>
       { if @props.newMeetingUserIds.length >= 2
-        <div className='item'>
-          <Calendar newMeetingUserIds={@getUsers(@props.users, @props.newMeetingUserIds)}/>
+        <div className='right item'>
+          <Calendar newMeetingUserIds={@getUsers(@props)}/>
         </div>
       }
-      <div className='right item'>
       { if @props.hasMovedUser > 0
-        <DownloadCSV users={@props.users}/>
+        <div className='right item'>
+          <DownloadCSV users={@props.users}/>
+          </div>
       }
       </div>
     </div>
