@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import CSVReader from 'react-csv-reader'
 import {isEqual, map} from 'lodash'
 
-import { papaparseOptions } from './utils';
-import DownloadCSV from './DownloadCSV';
-import Calendar from './Calendar';
+import { papaparseOptions } from './utils'
+import DownloadCSV from './DownloadCSV'
+import Calendar from './Calendar'
 `
 
 class Menu extends Component
@@ -16,17 +16,21 @@ class Menu extends Component
     not isEqual(nextProps.users, @props.users) or not isEqual(nextProps.newMeetingUserIds, @props.newMeetingUserIds)
 
   getUsers: ({users, newMeetingUserIds}) =>
-    console.log "newMeetingUserIds", newMeetingUserIds
     map(newMeetingUserIds, (userId) -> users[userId])
 
   handleFileLoaded: (data) =>
     @props.handleFileLoaded(data)
+
+  onError: (data) =>
+    console.log "data ERROR", data
+    @props.handleError(data)
 
   render: ->
     <div className='ui huge menu'>
       <div className='item'>
         <CSVReader
           onFileLoaded={@handleFileLoaded}
+          onError={@onError}
           parserOptions={papaparseOptions}/>
       </div>
       <div className='right menu'>

@@ -18,17 +18,39 @@ updateState = ({source, destination, draggableId}, state) ->
     state.users[draggableId].preferredMeetingTime = destination.droppableId
     state.hasMovedUser++
 
-    destinationtUserIdsOrder = state.usersGroupedByTime[destination.droppableId].userIds
+    destinationTime = state.usersGroupedByTime[destination.droppableId]
+    destinationtUserIdsOrder = destinationTime.userIds
     destinationtUserIdsOrder.splice(destination.index, 0, draggableId)
 
-  state.usersGroupedByTime[destination.droppableId].newMeetingUserIds.push(draggableId)
+  destinationTime.newMeetingUserIds.push(draggableId)
 
-  if  state.usersGroupedByTime[destination.droppableId].newMeetingUserIds.length >= 2
-    state.newMeetingUserIds = state.usersGroupedByTime[destination.droppableId].newMeetingUserIds.slice(-2)
+  if destinationTime.newMeetingUserIds.length >= 2
+    state.newMeetingUserIds = destinationTime.newMeetingUserIds.slice(-2)
 
   state
 
-decorateInitialData = (data) ->
+hasError = (data) ->
+  error = error: false
+  oneUser = keys data[0]
+  for header, i in validHeaders
+    if !(oneUser[i] == header)
+      return error = error: message: 'Invalid Columns'
+
+  error
+
+initialState =
+  users: {}
+  usersGroupedByTime: {}
+  preferredTimes: []
+  hasMovedUser: 0
+  newMeetingUserIds: []
+  error: false
+
+decorateInitialData = (data) =>
+  error = hasError(data)
+  console.log "{@initialState, error}", {...initialState, ...error}
+  return {...initialState, ...error} if error.error
+
   usersGroupedByTime = {}
   users = {}
   for user in data
@@ -45,7 +67,7 @@ decorateInitialData = (data) ->
 
   preferredTimes = keys(usersGroupedByTime)
 
-  {usersGroupedByTime, users, preferredTimes}
+  {usersGroupedByTime, users, preferredTimes, error}
 
 papaparseOptions =
   header: true
@@ -64,8 +86,11 @@ parseDate = (date) ->
   data[hourIndex] += ':00'
   data.join(' ')
 
+validHeaders = ['id','firstName','lastName','email','preferredMeetingTime','fixed']
+
 export {
   decorateInitialData,
+  initialState,
   papaparseOptions,
   parseDate,
   updateState
