@@ -1,0 +1,25 @@
+id,firstName,lastName,email,preferredMeetingTime,fixed
+5001,Eric+01,Mowery+01,Eric+01@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+5002,Eric+02,Mowery+02,Eric+02@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+5003,Eric+03,Mowery+03,Eric+03@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+5004,Eric+04,Mowery+04,Eric+04@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",TRUE
+5005,Eric+05,Mowery+05,Eric+05@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+5006,Eric+06,Mowery+06,Eric+06@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+5007,Eric+07,Mowery+07,Eric+07@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+5008,Eric+08,Mowery+08,Eric+08@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+5009,Eric+09,Mowery+09,Eric+09@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+5010,Eric+10,Mowery+10,Eric+10@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",TRUE
+5011,Eric+11,Mowery+11,Eric+11@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+5012,Eric+12,Mowery+12,Eric+12@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+5013,Eric+13,Mowery+13,Eric+13@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+5014,Eric+14,Mowery+14,Eric+14@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+5015,Eric+15,Mowery+15,Eric+15@imperative.com,"Friday, June 26th, 2020, 1 PM PST",TRUE
+5016,Eric+16,Mowery+16,Eric+16@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+5017,Eric+17,Mowery+17,Eric+17@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+5018,Eric+18,Mowery+18,Eric+18@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+5019,Eric+19,Mowery+19,Eric+19@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+5020,Eric+20,Mowery+20,Eric+20@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+5021,Eric+21,Mowery+21,Eric+21@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+5022,Eric+22,Mowery+22,Eric+22@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+5023,Eric+23,Mowery+23,Eric+23@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",TRUE
+5024,Eric+24,Mowery+24,Eric+24@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE

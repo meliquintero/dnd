@@ -1,0 +1,25 @@
+id,firstName,lastName,email,preferredMeetingTime,fixed
+1001,Nikhil+01,Singhal+01,Nikhil+01@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+1002,Nikhil+02,Singhal+02,Nikhil+02@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+1003,Nikhil+03,Singhal+03,Nikhil+03@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+1004,Nikhil+04,Singhal+04,Nikhil+04@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+1005,Nikhil+05,Singhal+05,Nikhil+05@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",TRUE
+1006,Nikhil+06,Singhal+06,Nikhil+06@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+1007,Nikhil+07,Singhal+07,Nikhil+07@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+1008,Nikhil+08,Singhal+08,Nikhil+08@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+1009,Nikhil+09,Singhal+09,Nikhil+09@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+1010,Nikhil+10,Singhal+10,Nikhil+10@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+1011,Nikhil+11,Singhal+11,Nikhil+11@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+1012,Nikhil+12,Singhal+12,Nikhil+12@imperative.com,"Friday, June 26th, 2020, 1 PM PST",TRUE
+1013,Nikhil+13,Singhal+13,Nikhil+13@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+1014,Nikhil+14,Singhal+14,Nikhil+14@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+1015,Nikhil+15,Singhal+15,Nikhil+15@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+1016,Nikhil+16,Singhal+16,Nikhil+16@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+1017,Nikhil+17,Singhal+17,Nikhil+17@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",TRUE
+1018,Nikhil+18,Singhal+18,Nikhil+18@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+1019,Nikhil+19,Singhal+19,Nikhil+19@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",FALSE
+1020,Nikhil+20,Singhal+20,Nikhil+20@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+1021,Nikhil+21,Singhal+21,Nikhil+21@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
+1022,Nikhil+22,Singhal+22,Nikhil+22@imperative.com,"Tuesday June 23rd, 2020, 2 PM PST",TRUE
+1023,Nikhil+23,Singhal+23,Nikhil+23@imperative.com,"Wednesday, June 24th, 2020, 11 AM PST",FALSE
+1024,Nikhil+24,Singhal+24,Nikhil+24@imperative.com,"Friday, June 26th, 2020, 1 PM PST",FALSE
